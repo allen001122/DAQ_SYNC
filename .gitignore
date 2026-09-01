@@ -1,0 +1,25 @@
+# MATLAB session
+*.asv
+*.m~
+*.mex*
+*.p
+*.slxc
+*.autosave
+octave-workspace
+
+# generated outputs — never commit
+_acceptance/
+Sync_Analysis_Results/
+*.mat
+*.xlsx
+!projects/**/*.csv
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# archives
+*.zip
+*.7z
+*.rar

@@ -1,0 +1,84 @@
+DAQ_SYNC 现行代码包 2026-09-01  引擎 4.2
+
+本包含现行源码、工程描述、机器路径和说明。不含历史 zip、对比脚本、旧清理脚本。
+
+用法：现场验收代码仍在
+  C:\Users\allen\Desktop\daq_yfy\重构\T4_DAQ_SYNC\code
+生产树切换见 docs\DAQ_SYNC_生产树切换清单.md，不自动搬目录。
+详细命令见 docs\DAQ_SYNC_冻结与使用说明.md。
+
+code\uff0833 个 .m）
+
+  工程描述访问
+    project_topology.m
+    window_table.m
+    pairing_config.m
+    config.m
+    engine_version.m
+
+  路径与落盘
+    load_local_paths.m
+    resolve_paths.m
+    layout_path.m
+    run_manifest.m
+
+  读取与契约
+    read_window_sources.m
+    validate_contract.m
+    probe_mat_fields.m
+
+  对齐算法核
+    align_pair.m
+    refine_coarse_lag.m
+    coherence_scan_lag.m
+    nearest_pick.m
+    compose_derived.m
+    verify_zero_crossing.m
+    harmonic_analysis.m
+
+  编排入口
+    process_one_window.m
+    run_one_window.m
+    run_batch.m
+    run_manual_window.m
+    run_harmonics.m
+    run_tidy_and_harmonics.m
+
+  交付导出
+    export_window_csv_relative.m
+    export_window_csv_absolute.m
+
+  检查与界面
+    preflight.m
+    health_report.m
+    plot_corrected_data_ui.m
+    select_window_ui.m
+    verify_modules.m
+
+  验收驱动
+    run_acceptance.m
+
+包根
+  local_paths.m
+  projects\jinghong_18w\
+  projects\jinghong_18w_equiv\
+  docs\DAQ_SYNC_冻结与使用说明.md
+  docs\DAQ_SYNC_日常操作卡.md
+  docs\DAQ_SYNC_生产树切换清单.md
+  docs\DAQ_SYNC_杂物外置清单.md
+  docs\DAQ_SYNC_W3对照表.md
+  文件清单.txt
+
+故意未收入
+  EXPORT_C6_TO_CSV.m          已被 EXPORT_C6_CSV_BY_LOAD 替换
+  CLEAN_AND_ARCHIVE.m         会误删 CSV，禁止再跑
+  CLEAN_FINAL_KEEP_ONLY.m
+  ARCHIVE_NONCORE_CODE.m
+  各类历史 zip、同事对比脚本、probe/verify 试验脚本
+
+注意
+  run_one_window 和 run_batch 是函数：run_one_window('jinghong_18w','007')。
+  不要靠改 config.m 的 groupId 选组。
+  冻结后不要无故重跑 18 组对齐。
+  正式 Dewesoft 路径用 export_window_csv_relative（相对时间 + Sync）。
+  绝对时间整条挂起，不要跑 export_window_csv_absolute。
